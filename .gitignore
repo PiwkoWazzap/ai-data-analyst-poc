@@ -1,0 +1,41 @@
+# -------------------------------
+# Python basics
+# -------------------------------
+__pycache__/
+*.py[cod]
+*.pyo
+
+# -------------------------------
+# Environments & secrets
+# -------------------------------
+venv/
+.env
+.venv/
+*.env
+
+# -------------------------------
+# Jupyter notebooks
+# -------------------------------
+.ipynb_checkpoints/
+
+# -------------------------------
+# OS / IDE files
+# -------------------------------
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# -------------------------------
+# Data files (large or sensitive)
+# -------------------------------
+data/*.csv
+data/*.xlsx
+data/*.parquet
+!data/sample_data.xlsx  # if you want to keep one sample file
+
+# -------------------------------
+# Streamlit cache / reports
+# -------------------------------
+.streamlit/
+**/.streamlit/
