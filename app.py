@@ -22,21 +22,15 @@ def test_openai_connection():
     try:
         response = client.chat.completions.create(
             model="gpt-4o-mini",
-            messages=[{"role": "user", "content": "Say hello in one short sentence."}],
+            messages=[{"role": "user", "content": "Respond with a short greeting to confirm the API connection works."}],
         )
         print("✅ OpenAI connection OK:", response.choices[0].message.content)
     except Exception as e:
         print("❌ OpenAI connection failed:", e)
 
 
-if __name__ == "__main__":
+def main():
     print("🚀 Starting AI Data Analyst PoC...")
-
-    DATA_PATH = "data/Data Dump - Accrual Accounts.xlsx"
-    df = load_dataset(DATA_PATH)
-    if df is None:
-        print("⚠️ No dataset loaded. Exiting.")
-        exit(1)
 
     load_dotenv()
     OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
@@ -45,10 +39,16 @@ if __name__ == "__main__":
     client = OpenAI(api_key=OPENAI_API_KEY)
     test_openai_connection()
 
+    DATA_PATH = "data/Data Dump - Accrual Accounts.xlsx"
+    df = load_dataset(DATA_PATH)
+    if df is None:
+        print("⚠️ No dataset loaded. Exiting.")
+        exit(1)
+
     ai_engine = AIQueryEngine(client, df)
 
     demo_questions = [
-        "Which columns have the most missing values?",
+        "How many rows have missing values?",
         "What are the average, min, and max values for each numeric column?",
         "Are there any outliers in the 'Transaction Value' column?",
         "How many unique categories are in the 'Currency' column?",
@@ -65,6 +65,10 @@ if __name__ == "__main__":
             print(f"❌ Error: {answer['error']}")
             print(f"SQL generated:\n{answer['sql']}")
         else:
+            print(f"\n💬 Summary:\n{answer['summary']}")
             print(f"🧠 Generated SQL:\n{answer['sql']}")
             print(f"\n📊 Result:\n{answer['result']}")
-            print(f"\n💬 Summary:\n{answer['summary']}")
+
+
+if __name__ == "__main__":
+    main()
