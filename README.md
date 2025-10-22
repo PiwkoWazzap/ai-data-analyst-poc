@@ -24,22 +24,6 @@ Use these to show concept viability:
 4. How many unique categories are in the “Currency” column?
 5. Show me rows where “Transaction Value” is greater than 10,000.
 
-## 🛠️ Project Structure
-
-📂 ai-data-analyst-poc/
-│
-├── ai\_query.py           # AI query engine (OpenAI + DuckDB logic)
-├── app.py                # Console demo runner
-├── ui.py                 # Streamlit web UI
-├── data/
-│
-
-└── Data Dump - Accrual Accounts.xlsx   # Sample dataset
-├── .env.example          # Example env file
-├── requirements.txt      # Dependencies
-├── .gitignore
-└── README.md
-
 ## ⚙️ Setup Instructions
 
 ### 1️⃣ Create and activate virtual environment

@@ -59,8 +59,8 @@ def main():
 
     st.title("AI Data Analyst")
     st.markdown("""
-    Ask questions about your data in natural language.  
-    The AI will generate SQL, run it on the dataset, and summarize the results.  
+    Ask questions about your data in natural language.
+    The AI will generate SQL, run it on the dataset, and summarize the results.
     Previous questions and results will stay visible.
     """)
 
