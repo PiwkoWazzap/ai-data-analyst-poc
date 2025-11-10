@@ -1,3 +1,4 @@
+import argparse
 import os
 import pandas as pd
 from ai_query import AIQueryEngine
@@ -29,8 +30,9 @@ def test_openai_connection():
         print("❌ OpenAI connection failed:", e)
 
 
-def main():
+def main(data_path: str):
     print("🚀 Starting AI Data Analyst PoC...")
+    print(f"📂 Using dataset: {data_path}")
 
     load_dotenv()
     OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
@@ -39,8 +41,7 @@ def main():
     client = OpenAI(api_key=OPENAI_API_KEY)
     test_openai_connection()
 
-    DATA_PATH = "data/Data Dump - Accrual Accounts.xlsx"
-    df = load_dataset(DATA_PATH)
+    df = load_dataset(data_path)
     if df is None:
         print("⚠️ No dataset loaded. Exiting.")
         exit(1)
@@ -71,4 +72,13 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    parser = argparse.ArgumentParser(description="Run the AI Data Analyst Streamlit app.")
+    parser.add_argument(
+        "--data",
+        type=str,
+        default="data/Data Dump - Accrual Accounts.xlsx",
+        help="Path to the Excel data file"
+    )
+    args = parser.parse_args()
+
+    main(args.data)

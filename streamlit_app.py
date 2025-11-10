@@ -1,3 +1,4 @@
+import argparse
 import os
 import pandas as pd
 import streamlit as st
@@ -35,7 +36,8 @@ def test_openai_connection(client):
         st.stop()
 
 
-def main():
+def main(data_path: str):
+    st.write(f"📂 Using dataset: {data_path}")
     load_dotenv()
     OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
     if not OPENAI_API_KEY:
@@ -44,8 +46,7 @@ def main():
     client = OpenAI(api_key=OPENAI_API_KEY)
     test_openai_connection(client)
 
-    DATA_PATH = "data/Data Dump - Accrual Accounts.xlsx"
-    df = load_dataset(DATA_PATH)
+    df = load_dataset(data_path)
     if df is None:
         st.stop()
 
@@ -124,4 +125,13 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    parser = argparse.ArgumentParser(description="Run the AI Data Analyst Streamlit app.")
+    parser.add_argument(
+        "--data",
+        type=str,
+        default="data/Data Dump - Accrual Accounts.xlsx",
+        help="Path to the Excel data file"
+    )
+    args = parser.parse_args()
+
+    main(args.data)

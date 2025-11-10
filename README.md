@@ -53,14 +53,34 @@ Copy `.env.example` → `.env` and set your OpenAI key:
 <pre class="overflow-visible!" data-start="2543" data-end="2590"><div class="contain-inline-size rounded-2xl relative bg-token-sidebar-surface-primary"><div class="sticky top-9"><div class="absolute end-0 bottom-0 flex h-9 items-center pe-2"><div class="bg-token-bg-elevated-secondary text-token-text-secondary flex items-center gap-4 rounded-sm px-2 font-sans text-xs"></div></div></div><div class="overflow-y-auto p-4" dir="ltr"><code class="whitespace-pre! language-bash"><span><span>OPENAI_API_KEY=sk-your-api-key-here
 </span></span></code></div></div></pre>
 
-### 4️⃣ Run console version (for debugging)
+### 4️⃣ Prepare dataset (optional)
 
-<pre class="overflow-visible!" data-start="2636" data-end="2661"><div class="contain-inline-size rounded-2xl relative bg-token-sidebar-surface-primary"><div class="sticky top-9"><div class="absolute end-0 bottom-0 flex h-9 items-center pe-2"><div class="bg-token-bg-elevated-secondary text-token-text-secondary flex items-center gap-4 rounded-sm px-2 font-sans text-xs"></div></div></div><div class="overflow-y-auto p-4" dir="ltr"><code class="whitespace-pre! language-bash"><span><span>python app.py
+By default, the app loads data from:
+
+<pre class="overflow-visible!" data-start="2403" data-end="2446"><div class="contain-inline-size rounded-2xl relative bg-token-sidebar-surface-primary"><div class="sticky top-9"><div class="absolute end-0 bottom-0 flex h-9 items-center pe-2"><div class="bg-token-bg-elevated-secondary text-token-text-secondary flex items-center gap-4 rounded-sm px-2 font-sans text-xs"></div></div></div><div class="overflow-y-auto p-4" dir="ltr"><code class="whitespace-pre! language-bash"><span><span>data/Data Dump - Accrual Accounts.xlsx
 </span></span></code></div></div></pre>
 
-### 5️⃣ Run Streamlit UI
+If you already have that file, no action is needed ✅ Otherwise, you can place your own Excel dataset there using the same name and path.
+
+### 5️⃣Run console version (for debugging)
+
+<pre class="overflow-visible!" data-start="2636" data-end="2661"><div class="contain-inline-size rounded-2xl relative bg-token-sidebar-surface-primary"><div class="sticky top-9"><div class="absolute end-0 bottom-0 flex h-9 items-center pe-2"><div class="bg-token-bg-elevated-secondary text-token-text-secondary flex items-center gap-4 rounded-sm px-2 font-sans text-xs"></div></div></div><div class="overflow-y-auto p-4" dir="ltr"><code class="whitespace-pre! language-bash"><span><span>python app.py</span>
+</span></code></div></div></pre>
+
+Optionally for custom dataset:
+
+<pre class="overflow-visible!" data-start="2403" data-end="2446"><div class="contain-inline-size rounded-2xl relative bg-token-sidebar-surface-primary"><div class="sticky top-9"><div class="absolute end-0 bottom-0 flex h-9 items-center pe-2"><div class="bg-token-bg-elevated-secondary text-token-text-secondary flex items-center gap-4 rounded-sm px-2 font-sans text-xs"></div></div></div><div class="overflow-y-auto p-4" dir="ltr"><code class="whitespace-pre! language-bash"><span><span>python app.py --data "data/new_dataset.xlsx"
+</span></span></code></div></div></pre>
+
+### 6 Run Streamlit UI
 
 <pre class="overflow-visible!" data-start="2688" data-end="2719"><div class="contain-inline-size rounded-2xl relative bg-token-sidebar-surface-primary"><div class="sticky top-9"><div class="absolute end-0 bottom-0 flex h-9 items-center pe-2"><div class="bg-token-bg-elevated-secondary text-token-text-secondary flex items-center gap-4 rounded-sm px-2 font-sans text-xs"></div></div></div><div class="overflow-y-auto p-4" dir="ltr"><code class="whitespace-pre! language-bash"><span><span>streamlit run streamlit_app.py
 </span></span></code></div></div></pre>
 
+Optionally for custom dataset:
+
+<pre class="overflow-visible!" data-start="2403" data-end="2446"><div class="contain-inline-size rounded-2xl relative bg-token-sidebar-surface-primary"><div class="sticky top-9"><div class="absolute end-0 bottom-0 flex h-9 items-center pe-2"><div class="bg-token-bg-elevated-secondary text-token-text-secondary flex items-center gap-4 rounded-sm px-2 font-sans text-xs"></div></div></div><div class="overflow-y-auto p-4" dir="ltr"><code class="whitespace-pre! language-bash"><span><span>streamlit run streamlit_app.py --data "data/new_dataset.xlsx"
+</span></span></code></div></div></pre>
+
 Then open the provided local URL (e.g., [http://localhost:8501](http://localhost:8501)) in your browser.
+
